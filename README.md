@@ -8,7 +8,7 @@ or [Ultimate ASI Loader](https://github.com/ThirteenAG/Ultimate-ASI-Loader).
 ## Available Plugins
 ### TS2CineDrawDistance
 The terrain draw distance during cinematics is severely limited, regardless of whatever graphics options the player has set &mdash; this plugin simply multiplies
-the camera far clip value by 10 when a cinematic is playing.
+the depth offset of the camera clip plane by 4 when a cinematic is playing.
 
 | Vanilla | Mod |
 | :-----: | :-: |

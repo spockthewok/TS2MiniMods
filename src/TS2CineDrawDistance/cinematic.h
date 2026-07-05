@@ -4,5 +4,5 @@
 namespace Cinematics
 {
     extern "C" void GetCinematicActive();
-    extern "C" void IncreaseCameraFarClip();
+    extern "C" void IncreaseCameraClipDepth();
 }
