@@ -2,8 +2,9 @@
 
 DWORD WINAPI MainThread(LPVOID param)
 {
-    Hooking::Nop((BYTE *)0x5B0172, 5);
-    Hooking::Nop((BYTE *)0x5AFF30, 5);
+    // cTSWinProcGameLoad::onTick()
+    Hooking::Nop((BYTE *)0x5AFF30, 5); // ealogo_audio.movie
+    Hooking::Nop((BYTE *)0x5B0172, 5); // intro_eng_audio.movie
     FreeLibraryAndExitThread((HMODULE)param, 0);
     return 0;
 }

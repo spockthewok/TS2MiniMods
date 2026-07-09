@@ -2,6 +2,8 @@
 
 DWORD WINAPI MainThread(LPVOID param)
 {
+    // cTSUIThumbnailFactoryFamily::FindCouples()
+    // if (32 < sVar2) -> if (33 < sVar2)
     char maxAge[1] = {0x33};
     Hooking::WriteToMemory((DWORD)0x43AA7E, maxAge, sizeof(maxAge));
     FreeLibraryAndExitThread((HMODULE)param, 0);

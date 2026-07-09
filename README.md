@@ -15,13 +15,13 @@ the depth offset of the camera clip plane by 4 when a cinematic is playing.
 | <img src="media/vanillacinematic.png" width="450"> | <img src="media/modcinematic.png" width="450"> |
 
 ### TS2ElderCouplePoses
-This lifts the strange restriction preventing elders in a romantic relationship from using couple poses in their thumbnails.
+This lifts the strange restriction preventing elders in a committed relationship from using couple poses in their thumbnails.
 
 | Vanilla | Mod |
 | :-----: | :-: |
 | <img src="media/vanillapose.png" width="350"> | <img src="media/modpose.png" width="350"> |
 
-***Note:*** *Existing households will need to be loaded and saved for the thumbnails to be regenerated.*
+***Note:*** *Households with elder couples in previously played neighbourhoods will need to be loaded and saved for their thumbnails to be regenerated.*
 
 ### TS2MovieSkipper
 Patches out the intro movies that play when the game first launches, taking the player straight to the initial loading screen. Inspired by a feature from
