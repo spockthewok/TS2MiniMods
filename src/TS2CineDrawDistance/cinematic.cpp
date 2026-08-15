@@ -4,14 +4,15 @@ namespace
 {
     const DWORD OncePerFrameUpdate_Exit = 0x5B76CF;
     const DWORD ComputeCameraToClipSpaceTransform_Exit = 0xF947A7;
-    const float clipDepthMult = 4.0;
+
     bool cinematicActive = false;
 }
 
 namespace Cinematics
 {
-    // Steals the return value of the call to IsCinematicSceneActive() in cTSWinSceneGraph::OncePerFrameUpdate()
-    // We need this so we don't increase the clip depth for ALL cameras, which would break things like thumbnails
+    // cTSWinSceneGraph::OncePerFrameUpdate
+    // Stashes return value of the call to cTSSGSystem::IsCinematicSceneActive
+    // We need this so we don't increase the clip depth for ALL cameras
     void __declspec(naked) GetCinematicActive()
     {
         __asm {
@@ -21,13 +22,23 @@ namespace Cinematics
         }
     }
 
+    static float CalculateClipDepthMult(float clipDepth)
+    {
+        // Thumbnail clipDepth < -1, this should better protect them from being affected
+        if (cinematicActive && clipDepth >= -1)
+            return clipDepth * 4;
+
+        return clipDepth;
+    }
+
+    // cViewerRefNodeImpl::ComputeCameraToClipSpaceTransform
     void __declspec(naked) IncreaseCameraClipDepth()
     {
         __asm {
-            cmp [cinematicActive],0x0
-            je LAB_Exit
-            fmul [clipDepthMult]
-        LAB_Exit:
+            fstp [ebp+0xA0]
+            push [ebp+0xA0]
+            call CalculateClipDepthMult
+            add esp,0x4
             fstp [ebp+0xA0]
             jmp ComputeCameraToClipSpaceTransform_Exit
         }
