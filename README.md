@@ -8,6 +8,17 @@ A collection of small patches for The Sims 2 that fix or improve various minor i
 [Ultimate ASI Loader](https://github.com/ThirteenAG/Ultimate-ASI-Loader).
 
 ## Available Plugins
+### TS2AccurateImposterTerrain
+Improves the accuracy of lot imposter terrain for lots that aren't completely flat.
+
+| Vanilla | Mod |
+| :-----: | :-: |
+| <img src="media/vanillaimposter.png" width="450"> | <img src="media/modimposter.png" width="450"> |
+
+> [!NOTE]
+> Like the lot imposter texture options from Sims2RPC, you'll need to enter, modify, save, and exit the lot to see the improved terrain, as this
+> is the only time the game will regenerate a lot imposter.
+
 ### TS2CineDrawDistance
 The terrain draw distance during cinematics is severely limited, regardless of whatever graphics options the player has set &mdash; this plugin simply multiplies
 the depth offset of the camera clip plane by 4 when a cinematic is playing.
