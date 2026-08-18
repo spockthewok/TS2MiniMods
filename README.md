@@ -9,15 +9,16 @@ A collection of small patches for The Sims 2 that fix or improve various minor i
 
 ## Available Plugins
 ### TS2AccurateImposterTerrain
-Improves the accuracy of lot imposter terrain for lots that aren't completely flat.
+Reduces how 'sloped' a lot's terrain vertices need to be for the game to consider adding them to its imposter mesh, improving the accuracy of the imposter terrain
+for lots that aren't completely flat.
 
 | Vanilla | Mod |
 | :-----: | :-: |
 | <img src="media/vanillaimposter.png" width="450"> | <img src="media/modimposter.png" width="450"> |
 
 > [!NOTE]
-> Like the lot imposter texture options from Sims2RPC, you'll need to enter, modify, save, and exit the lot to see the improved terrain, as this
-> is the only time the game will regenerate a lot imposter.
+> Like the higher resolution lot imposter texture options from Sims2RPC, you'll need to enter, modify, save, and exit the lot to see the improved terrain, as this
+> is the only time the game will fully regenerate a lot imposter.
 
 ### TS2CineDrawDistance
 The terrain draw distance during cinematics is severely limited, regardless of whatever graphics options the player has set &mdash; this plugin simply multiplies
