@@ -1,3 +1,4 @@
+#include "headers.h"
 #include "core.h"
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
@@ -6,7 +7,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
     {
     case DLL_PROCESS_ATTACH:
         DisableThreadLibraryCalls(hModule);
-        Core::InjectPatches();
+        Core::Init();
         break;
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:

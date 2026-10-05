@@ -5,10 +5,10 @@ A collection of small patches for The Sims 2 that fix or improve various minor i
 ## Requirements
 - The Sims 2: Ultimate Collection <ins>**OR**</ins> The Sims 2 disc version with all EPs and SPs.
 - [Sims2RPC](https://modthesims.info/d/648220/sims2rpc-modded-sims-2-launcher-for-mansion-and-garden.html) <ins>**OR**</ins>
-[Ultimate ASI Loader](https://github.com/ThirteenAG/Ultimate-ASI-Loader).
+  [Ultimate ASI Loader](https://github.com/ThirteenAG/Ultimate-ASI-Loader).
 
-## Available Plugins
-### TS2AccurateImposterTerrain
+## Available Patches
+### Accurate Imposter Terrain
 Reduces how 'sloped' a lot's terrain vertices need to be for the game to consider adding them to its imposter mesh, improving the accuracy of the imposter terrain
 for lots that aren't completely flat.
 
@@ -17,19 +17,19 @@ for lots that aren't completely flat.
 | <img src="media/vanillaimposter.png" width="450"> | <img src="media/modimposter.png" width="450"> |
 
 > [!NOTE]
-> Like the higher resolution lot imposter texture options from Sims2RPC, you'll need to enter, modify, save, and exit the lot to see the improved terrain, as this
-> is the only time the game will fully regenerate a lot imposter.
+> Like the higher resolution lot imposter texture options from Sims2RPC/TS2 Extender, you'll need to enter, modify, save, and exit the lot to see the improved terrain,
+> as this is the only time the game will fully regenerate a lot imposter.
 
-### TS2CineDrawDistance
-The terrain draw distance during cinematics is severely limited, regardless of whatever graphics options the player has set &mdash; this plugin simply multiplies
+### Cine Draw Distance
+The terrain draw distance during cinematics is severely limited, regardless of whatever graphics options the player has set &mdash; this simply multiplies
 the depth offset of the camera clip plane by 4 when a cinematic is playing.
 
 | Vanilla | Mod |
 | :-----: | :-: |
 | <img src="media/vanillacinematic.png" width="450"> | <img src="media/modcinematic.png" width="450"> |
 
-### TS2ElderCouplePoses
-This lifts the strange restriction preventing elders in a committed relationship from using couple poses in their thumbnails.
+### Elder Couple Poses
+Lifts the strange restriction preventing elders in a committed relationship from using couple poses in their thumbnails.
 
 | Vanilla | Mod |
 | :-----: | :-: |
@@ -38,15 +38,24 @@ This lifts the strange restriction preventing elders in a committed relationship
 > [!NOTE]
 > Households with elder couples in previously played neighbourhoods will need to be loaded and saved for their thumbnails to be regenerated.
 
-### TS2MovieSkipper
+### Movie Skipper
 Patches out the intro movies that play when the game first launches, taking the player straight to the initial loading screen. Inspired by a feature from
 [TS2 Extender](https://github.com/LazyDuchess/TS2-Extender).
+
+### No Web Services
+Prevents the game creating its defunct online services upon launch. The servers they rely on are dead, so it's unnecessary for the game to allocate
+memory for them to do absolutely nothing.
+
+### Unrestricted Chemistry UI
+Removes the age restrictions from the chemistry UI, allowing chemistry scores to be displayed between Sims of any valid romanceable age group. Requires
+using a mod that enables chemistry between Sims of different ages to have any noticeable effect.
 
 ## Installation
 **Sims2RPC Users:**
 
-1. Download one or more of the plugins found under the [Releases](https://github.com/spockthewok/TS2MiniMods/releases/latest) section of this repository.
-2. Move the downloaded plugins to the `\TSBin\mods` directory, found under wherever you have the Sims 2 installed to. For example, on my machine, they would be moved to:
+1. Download `TS2MiniMods.zip` found under the [Releases](https://github.com/spockthewok/TS2MiniMods/releases/latest) section of this repository.
+2. Extract `TS2MiniMods.asi` and `TS2MiniMods.ini` from the zip file to the `\TSBin\mods` directory, found wherever you have the Sims 2 installed to.
+   For example, on my machine, they would be moved to:
 
    `E:\Games\The Sims 2\Fun with Pets\SP9\TSBin\mods`
 
@@ -56,8 +65,10 @@ Patches out the intro movies that play when the game first launches, taking the 
 2. Extract `dsound.dll` from the zip file and place it in the game's `\TSBin` directory. On my machine, it would go here:
 
    `E:\Games\The Sims 2\Fun with Pets\SP9\TSBin`
-3. Download one or more of my [plugins](https://github.com/spockthewok/TS2MiniMods/releases/latest) and move them to the same `\TSBin` directory Ultimate ASI Loader
-was extracted to.
+3. Download `TS2MiniMods.zip` found under the [Releases](https://github.com/spockthewok/TS2MiniMods/releases/latest) section of this repository.
+4. Extract `TS2MiniMods.asi` and `TS2MiniMods.ini` from the zip file to the same `\TSBin` directory Ultimate ASI Loader was extracted to.
 
 ## Thanks
+[metayeti](https://github.com/metayeti), for [mINI](https://github.com/metayeti/mINI).
+
 [LazyDuchess](https://github.com/LazyDuchess), for the hooking code used in this mod, and for [TS2 Extender](https://github.com/LazyDuchess/TS2-Extender).

@@ -1,4 +1,6 @@
-#include "cinematic.h"
+#include "Patches/cinedrawdistance.h"
+#include "hooking.h"
+#include "core.h"
 
 namespace
 {
@@ -8,12 +10,12 @@ namespace
     bool cinematicActive = false;
 }
 
-namespace Cinematics
+namespace MiniMods
 {
     // cTSWinSceneGraph::OncePerFrameUpdate
     // Stashes return value of the call to cTSSGSystem::IsCinematicSceneActive
     // We need this so we don't increase the clip depth for ALL cameras
-    void __declspec(naked) GetCinematicActive()
+    static void __declspec(naked) GetCinematicActive()
     {
         __asm {
             call [eax+0xE0]
@@ -25,14 +27,14 @@ namespace Cinematics
     static float CalculateClipDepthMult(float clipDepth)
     {
         // Thumbnail clipDepth < -1, this should better protect them from being affected
-        if (cinematicActive && clipDepth >= -1)
-            return clipDepth * 4;
+        if (cinematicActive && clipDepth >= -1.0)
+            return clipDepth * 4.0;
 
         return clipDepth;
     }
 
     // cViewerRefNodeImpl::ComputeCameraToClipSpaceTransform
-    void __declspec(naked) IncreaseCameraClipDepth()
+    static void __declspec(naked) IncreaseCameraClipDepth()
     {
         __asm {
             fstp [ebp+0xA0]
@@ -42,5 +44,11 @@ namespace Cinematics
             fstp [ebp+0xA0]
             jmp ComputeCameraToClipSpaceTransform_Exit
         }
+    }
+
+    void IncreaseCineDrawDistance()
+    {
+        Hooking::MakeJMP((BYTE *)(0x1B76C9 + Core::modBase), (DWORD)GetCinematicActive, 6);
+        Hooking::MakeJMP((BYTE *)(0xB947A1 + Core::modBase), (DWORD)IncreaseCameraClipDepth, 6);
     }
 }

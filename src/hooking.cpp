@@ -16,7 +16,7 @@ namespace Hooking
         return;
     }
 
-    void WriteToMemory(DWORD addressToWrite, char *valueToWrite, int byteNum)
+    void WriteToMemory(DWORD addressToWrite, const BYTE *valueToWrite, int byteNum)
     {
         unsigned long OldProtection;
 
