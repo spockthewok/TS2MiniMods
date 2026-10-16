@@ -27,7 +27,7 @@ namespace MiniMods
     static float CalculateClipDepthMult(float clipDepth)
     {
         // Thumbnail clipDepth < -1, this should better protect them from being affected
-        if (cinematicActive && clipDepth >= -1.0)
+        if (cinematicActive && clipDepth >= -1)
             return clipDepth * 4.0;
 
         return clipDepth;

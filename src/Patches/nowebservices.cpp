@@ -5,6 +5,7 @@
 namespace
 {
     const BYTE contentBrowserJmp[] = {0xE9, 0x8B, 0x00, 0x00, 0x00};
+    const BYTE lotMetadataJmp[] = {0xE9, 0x6C, 0x01, 0x00, 0x00};
     constexpr size_t jmpSize = sizeof(contentBrowserJmp);
 }
 
@@ -18,5 +19,10 @@ namespace MiniMods
         // cTSUIDialogManager::ShowContentBrowserDialog
         // Forces the content browser dialogue method to immediately return
         Hooking::WriteToMemory((0xA4970 + Core::modBase), contentBrowserJmp, jmpSize);
+        // cTSCustomContentSupport::CollectFilesForLot
+        // Game tries to add Exchange metadata to file when packaging a lot
+        // Relies on the web services we disabled, so always fails
+        // This removes the failure check to allow the lot to still be packaged
+        Hooking::WriteToMemory((0x5E0251 + Core::modBase), lotMetadataJmp, jmpSize);
     }
 }
