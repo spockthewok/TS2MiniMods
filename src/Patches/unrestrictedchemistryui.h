@@ -2,5 +2,5 @@
 
 namespace MiniMods
 {
-    void RemoveChemistryRestrictions();
+    void RemoveChemistryUIRestrictions();
 }

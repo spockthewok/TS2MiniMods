@@ -4,7 +4,7 @@
 
 namespace
 {
-    const DWORD CreateDelauneyTerrainGeometry_Exit = 0xA003E0;
+    constexpr DWORD CreateDelauneyTerrainGeometry_Exit = 0xA003E0;
 }
 
 namespace MiniMods

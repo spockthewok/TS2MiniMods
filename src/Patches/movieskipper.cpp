@@ -1,13 +1,13 @@
 #include "Patches/movieskipper.h"
 #include "hooking.h"
-#include "core.h"
+#include "TS2/base.h"
 
 namespace MiniMods
 {
     void DisableIntroMovies()
     {
         // cTSWinProcGameLoad::onTick
-        Hooking::Nop(reinterpret_cast<BYTE *>(0x1AFF30 + Core::modBase), 5); // ealogo_audio.movie
-        Hooking::Nop(reinterpret_cast<BYTE *>(0x1B0172 + Core::modBase), 5); // intro_eng_audio.movie
+        Hooking::Nop((0x1AFF30 + Module::base), 5); // ealogo_audio.movie
+        Hooking::Nop((0x1B0172 + Module::base), 5); // intro_eng_audio.movie
     }
 }

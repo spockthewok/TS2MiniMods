@@ -1,23 +1,23 @@
 #include "Patches/unrestrictedchemistryui.h"
 #include "hooking.h"
-#include "core.h"
+#include "TS2/base.h"
 
 namespace
 {
     const BYTE jmpByte = 0xEB;
-    constexpr size_t byteSize = sizeof(jmpByte);
+    constexpr size_t byteSize = sizeof(BYTE);
 }
 
 namespace MiniMods
 {
-    void RemoveChemistryRestrictions()
+    void RemoveChemistryUIRestrictions()
     {
         // cTSNeighbor::GetChemistryBetween
         // Patches several chemistry validity checks to always be true
-        Hooking::WriteToMemory((0x42EC16 + Core::modBase), &jmpByte, byteSize);
-        Hooking::WriteToMemory((0x42EC44 + Core::modBase), &jmpByte, byteSize);
-        Hooking::Nop(reinterpret_cast<BYTE *>(0x42ECDE + Core::modBase), 12);
-        Hooking::WriteToMemory((0x42ECF2 + Core::modBase), &jmpByte, byteSize);
-        Hooking::WriteToMemory((0x42ED0B + Core::modBase), &jmpByte, byteSize);
+        Hooking::WriteToMemory((0x42EC16 + Module::base), &jmpByte, byteSize);
+        Hooking::WriteToMemory((0x42EC44 + Module::base), &jmpByte, byteSize);
+        Hooking::Nop((0x42ECDE + Module::base), 12);
+        Hooking::WriteToMemory((0x42ECF2 + Module::base), &jmpByte, byteSize);
+        Hooking::WriteToMemory((0x42ED0B + Module::base), &jmpByte, byteSize);
     }
 }

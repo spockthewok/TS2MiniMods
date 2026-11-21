@@ -3,7 +3,7 @@
 
 namespace Hooking
 {
-    void Nop(BYTE *pAddress, DWORD dwLen);
-    void WriteToMemory(DWORD addressToWrite, const BYTE *valueToWrite, int byteNum);
-    void MakeJMP(BYTE *pAddress, DWORD dwJumpTo, DWORD dwLen);
+    void Nop(DWORD address, size_t byteNum);
+    void WriteToMemory(DWORD addressToWrite, const BYTE *valueToWrite, size_t byteNum);
+    void MakeJMP(DWORD jmpFrom, DWORD jmpTo, size_t byteNum);
 }

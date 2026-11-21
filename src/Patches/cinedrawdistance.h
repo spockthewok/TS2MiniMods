@@ -2,5 +2,5 @@
 
 namespace MiniMods
 {
-    void IncreaseCineDrawDistance();
+    extern "C" void IncreaseCineDrawDistance();
 }

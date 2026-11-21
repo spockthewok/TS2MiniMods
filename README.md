@@ -38,6 +38,16 @@ Lifts the strange restriction preventing elders in a committed relationship from
 > [!NOTE]
 > Households with elder couples in previously played neighbourhoods will need to be loaded and saved for their thumbnails to be regenerated.
 
+### Hidden Cheats
+An extension of [TS2-HiddenCheats](https://github.com/LazyDuchess/TS2-HiddenCheats) by LazyDuchess. As well as restoring the disabled `effect` and
+`effectsManager` cheats, this version also restores the disabled `overlay` cheat &mdash; unlike LazyDuchess' original mod, none of these require
+setting `testingCheatsEnabled` to true in `globalProps.xml` to be used.
+
+Enter `help effect`/`effectsManager`/`overlay` into the game's command window to get an overview of what each cheat does and their parameters.
+
+Also provides an option to disable the testing cheats requirement for ***ALL*** of the game's cheats/commands, which may be useful for cheats
+such as `money` or `allmenus` that are usually inaccessible without the `globalProps.xml` edit mentioned above.
+
 ### Movie Skipper
 Patches out the intro movies that play when the game first launches, taking the player straight to the initial loading screen. Inspired by a feature from
 [TS2 Extender](https://github.com/LazyDuchess/TS2-Extender).
@@ -71,4 +81,5 @@ using a mod that enables chemistry between Sims of different ages to have any no
 ## Thanks
 [metayeti](https://github.com/metayeti), for [mINI](https://github.com/metayeti/mINI).
 
-[LazyDuchess](https://github.com/LazyDuchess), for the hooking code used in this mod, and for [TS2 Extender](https://github.com/LazyDuchess/TS2-Extender).
+[LazyDuchess](https://github.com/LazyDuchess), for the hooking code used in this mod, [TS2 Extender](https://github.com/LazyDuchess/TS2-Extender),
+and [TS2-HiddenCheats](https://github.com/LazyDuchess/TS2-HiddenCheats).

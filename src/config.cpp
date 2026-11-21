@@ -11,8 +11,10 @@ namespace
 
 namespace Config
 {
-    float slopeThreshold = 0.25;
+    float slopeThreshold = 0.25f;
     bool cineDrawDistance = true;
+    bool effectCheats = false;
+    bool allowAllCheats = false;
     bool elderCouplePoses = true;
     bool movieSkipper = false;
     bool noWebServices = true;
@@ -50,6 +52,7 @@ namespace Config
             return "";
 
         std::filesystem::path exePath(buffer);
+
         return exePath.filename().string();
     }
 
@@ -67,6 +70,8 @@ namespace Config
 
         slopeThreshold = GetIniValue("AccurateImposterTerrain", "slopeThreshold", slopeThreshold);
         cineDrawDistance = GetIniValue("CineDrawDistance", "enabled", cineDrawDistance);
+        effectCheats = GetIniValue("HiddenCheats", "effectCheats", effectCheats);
+        allowAllCheats = GetIniValue("HiddenCheats", "allowAllCheats", allowAllCheats);
         elderCouplePoses = GetIniValue("ElderCouplePoses", "enabled", elderCouplePoses);
         movieSkipper = GetIniValue("MovieSkipper", "enabled", movieSkipper);
         noWebServices = GetIniValue("NoWebServices", "enabled", noWebServices);

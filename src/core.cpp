@@ -1,25 +1,29 @@
 #include "core.h"
 #include "hooking.h"
 #include "config.h"
+#include "TS2/base.h"
 #include "Patches/accurateimposterterrain.h"
 #include "Patches/cinedrawdistance.h"
 #include "Patches/eldercoupleposes.h"
+#include "Patches/hiddencheats.h"
 #include "Patches/movieskipper.h"
 #include "Patches/nowebservices.h"
 #include "Patches/unrestrictedchemistryui.h"
 
 namespace Core
 {
-    DWORD modBase;
-
     static void InjectPatches()
     {
-        modBase = reinterpret_cast<DWORD>(GetModuleHandleA(NULL));
-
-        Hooking::MakeJMP((BYTE *)(0x6003DA + modBase), (DWORD)(MiniMods::AlterImposterAccuracy), 6);
+        Hooking::MakeJMP((0x6003DA + Module::base), (DWORD)(MiniMods::AlterImposterAccuracy), 6);
 
         if (Config::cineDrawDistance)
-            MiniMods::IncreaseCineDrawDistance();
+            Hooking::MakeJMP((0xB947A1 + Module::base), (DWORD)MiniMods::IncreaseCineDrawDistance, 6);
+
+        if (Config::effectCheats)
+            MiniMods::RestoreEffectCheats();
+
+        if (Config::allowAllCheats)
+            Hooking::MakeJMP((0x90DAA0 + Module::base), (DWORD)MiniMods::AllowTestingCheats, 7);
 
         if (Config::elderCouplePoses)
             MiniMods::AllowElderCouplePoses();
@@ -31,11 +35,13 @@ namespace Core
             MiniMods::DisableWebServices();
 
         if (Config::unrestrictedChemistryUI)
-            MiniMods::RemoveChemistryRestrictions();
+            MiniMods::RemoveChemistryUIRestrictions();
     }
 
     void Init()
     {
+        Module::base = reinterpret_cast<DWORD>(GetModuleHandleA(NULL));
+
         Config::Init();
         InjectPatches();
     }
